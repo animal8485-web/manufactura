@@ -162,7 +162,6 @@ export function BookingForm({ onBack }: { onBack?: () => void }) {
         <fieldset className="booking-choice" aria-describedby={`${id}-reservation-terms`} disabled={locked || loading}>
           <legend>Выберите время</legend>
           <p className="booking-reservation-note" id={`${id}-reservation-terms`}>Стол будет зарезервирован для Вас на 3 часа. Мы сохраняем бронь в течение 20 минут после указанного времени. Если Вы задерживаетесь, пожалуйста, предупредите нас заранее.</p>
-          <p className="booking-timezone">Время местное, Барнаул.</p>
           <div className="booking-availability" role="status" aria-live="polite">
             {loading ? <p>Проверяем свободное время…</p> : loadError ? <p>{loadError}</p> : !hasAvailableTime ? <p>На эту дату нет свободного времени для {guests} гостей. Выберите другую дату или количество персон.</p> : null}
           </div>

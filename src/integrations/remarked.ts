@@ -1,6 +1,7 @@
 const API_URL = 'https://app.remarked.ru/api/v1/ApiReservesWidget';
 export const REMARKED_POINT = 599599;
 export const BOOKING_MINUTES = 180;
+export const SLOT_MINUTES = 15;
 export const VENUE_TIME_ZONE = 'Asia/Barnaul';
 
 export type BookingSession = { token: string; minGuests: number; maxGuests: number };
@@ -98,24 +99,50 @@ export function parseSlots(raw: unknown, date: string, now = new Date()): Bookin
   const next = new Date(`${date}T12:00:00Z`);
   next.setUTCDate(next.getUTCDate() + 1);
   const nextDate = next.toISOString().slice(0, 10);
-  const slots = new Map<string, BookingSlot>();
+  const step = SLOT_MINUTES * 60 * 1000;
+  const intervals = new Map<number, Set<string>>();
   for (const item of raw) {
     const row = object(item);
     const start = typeof row.start_datetime === 'string' ? row.start_datetime.replace('T', ' ').slice(0, 19) : '';
     const duration = Number(row.duration);
     if (row.is_free !== true || !/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(start)
-      || start <= current || duration !== BOOKING_MINUTES * 60) continue;
+      || start <= current || duration !== SLOT_MINUTES * 60) continue;
     const slotDate = start.slice(0, 10);
     if (slotDate !== date && slotDate !== nextDate) continue;
-    slots.set(start, { id: start, date: slotDate, time: start.slice(11, 16), duration: BOOKING_MINUTES });
+    // UTC is only used for arithmetic on the venue's local calendar values.
+    const stamp = Date.parse(`${start.replace(' ', 'T')}Z`);
+    if (!Number.isFinite(stamp) || new Date(stamp).toISOString().slice(0, 19).replace('T', ' ') !== start) continue;
+    const choices = intervals.get(stamp) ?? new Set<string>();
+    const tables = Array.isArray(row.tables_ids) ? row.tables_ids.map(id => [id]) : [];
+    const bundles = Array.isArray(row.table_bundles) ? row.table_bundles : Object.values(object(row.table_bundles));
+    for (const choice of [...tables, ...bundles]) {
+      if (!Array.isArray(choice) || !choice.length) continue;
+      const ids = choice.map(Number);
+      if (ids.some(id => !Number.isSafeInteger(id) || id <= 0)) continue;
+      choices.add([...new Set(ids)].sort((a, b) => a - b).join(','));
+    }
+    intervals.set(stamp, choices);
   }
-  return [...slots.values()].sort((a, b) => a.id.localeCompare(b.id));
+  const slots: BookingSlot[] = [];
+  for (const [stamp, choices] of intervals) {
+    // A free quarter hour alone does not guarantee a three-hour reservation.
+    // Keep a table (or the same table bundle) available throughout the visit.
+    let common = [...choices];
+    for (let offset = 1; offset < BOOKING_MINUTES / SLOT_MINUTES && common.length; offset++) {
+      const following = intervals.get(stamp + offset * step);
+      common = common.filter(choice => following?.has(choice));
+    }
+    if (!common.length) continue;
+    const start = new Date(stamp).toISOString().slice(0, 19).replace('T', ' ');
+    slots.push({ id: start, date: start.slice(0, 10), time: start.slice(11, 16), duration: BOOKING_MINUTES });
+  }
+  return slots.sort((a, b) => a.id.localeCompare(b.id));
 }
 
 export async function getBookingSlots(session: BookingSession, date: string, guests: number, signal?: AbortSignal) {
   const data = await request('GetSlots', {
     token: session.token, reserve_date_period: { from: date, to: date },
-    guests_count: guests, slot_duration: BOOKING_MINUTES * 60,
+    guests_count: guests, slot_duration: SLOT_MINUTES * 60,
   }, signal);
   if (data.status !== 'success') throw new BookingError('Не удалось получить свободное время. Попробуйте ещё раз.');
   return parseSlots(data.slots, date);
