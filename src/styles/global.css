@@ -8,6 +8,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'TT Interphases Pro Condensed';
+  src: url('../assets/fonts/TTInterphasesProCondensed-DemiBold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
 :root {
   font-family: var(--font-brand);
   color: var(--color-text);
@@ -25,7 +33,8 @@ img { display: block; max-width: 100%; }
 .app-shell { display: flex; flex-direction: column; min-height: 100vh; }
 .site-header, .site-footer, .page-container { width: min(100% - 32px, var(--container-content)); margin-inline: auto; }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 20px; }
-.site-logo { font-size: 20px; font-weight: 700; text-transform: uppercase; }
+.site-logo { flex: 0 0 auto; }
+.site-logo img { width: 32px; height: 32px; object-fit: contain; }
 .site-nav { display: flex; gap: 24px; font-size: 16px; }
 .button { border: 0; border-radius: 999px; padding: 12px 20px; }
 .button--primary { background: var(--color-primary); color: var(--color-on-primary); text-transform: uppercase; }
@@ -79,7 +88,12 @@ img { display: block; max-width: 100%; }
 @media (min-width: 48rem) {
   .site-header, .site-footer, .page-container { width: min(100% - 64px, var(--container-content)); }
   .hero-section { margin: 0; }
-  .hero-card { min-height: 720px; padding: 32px; border-radius: 24px; }
+  .site-header { min-height: 84px; }
+  .hero-card { height: calc(100svh - 84px); min-height: 540px; padding: 32px; border-radius: 24px; }
+  .hero-brand { max-width: min(720px, 70svh); flex-shrink: 0; }
+  .facade-slot { flex: 1; min-height: 0; max-width: 720px; margin: 24px 0; padding-top: 0; }
+  .facade-slot img { width: 100%; height: 100%; object-fit: contain; }
+  .hero-cta { max-width: 720px; }
   .home-section { margin-top: 64px; }
   .horizontal-scroll, .gallery-grid { gap: 20px; margin-right: 0; padding-right: 0; }
   .horizontal-scroll .card { flex-basis: calc((100% - 60px) / 4); }
@@ -87,4 +101,12 @@ img { display: block; max-width: 100%; }
   .about-section { margin-top: 96px; padding: 32px 0; }
   .gallery-section { margin-top: 80px; }
   .card h3, .card p { font-size: 16px; line-height: 22px; }
+}
+
+.dish-card h3 {
+  font-family: 'TT Interphases Pro Condensed', var(--font-brand);
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: -.03em;
 }

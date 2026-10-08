@@ -13,12 +13,12 @@ import cocktailRed from '../assets/menu/menu-07.jpg';
 export const menuSections: { id: string; title: string; dishes: Dish[] }[] = [
   {
     id: 'snacks', title: 'Закуски', dishes: [
-      { id: 'vegetables', name: 'Пряные маринованные овощи', description: '350 мл', price: '750', image: vegetables },
-      { id: 'fries', name: 'Картофель фри', description: '150 мл', price: '750', image: fries },
-      { id: 'olives', name: 'Оливки фри', description: '350 мл', price: '750', image: olives },
-      { id: 'corn', name: 'Кукурузные ребра', description: '150 мл', price: '750', image: corn },
-      { id: 'plate', name: 'Жареный баклажан Katsu Parmigiana', description: '350 мл', price: '750', image: plate },
-      { id: 'toast', name: 'Тар-тар из говядины с мисо-горчицей', description: '350 мл', price: '750', image: toast },
+      { id: 'vegetables', name: 'Пряные маринованные овощи', description: '350 г', price: '750', image: vegetables },
+      { id: 'fries', name: 'Картофель фри', description: '150 г', price: '750', image: fries },
+      { id: 'olives', name: 'Оливки фри', description: '350 г', price: '750', image: olives },
+      { id: 'corn', name: 'Кукурузные ребра', description: '150 г', price: '750', image: corn },
+      { id: 'plate', name: 'Жареный баклажан Katsu Parmigiana', description: '350 г', price: '750', image: plate },
+      { id: 'toast', name: 'Тар-тар из говядины с мисо-горчицей', description: '350 г', price: '750', image: toast },
     ],
   },
   {

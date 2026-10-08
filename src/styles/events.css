@@ -4,17 +4,31 @@
 .screen-back .chevron { transform: rotate(-135deg); }
 .events-page { max-width: 840px; margin-inline: auto; }
 .events-list { padding-top: 16px; }
-.event-detail { padding-bottom: 40px; border-bottom: 1px solid var(--color-primary); }
+.event-detail { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "date date" "day time" "poster poster"; padding-bottom: 40px; border-bottom: 1px solid var(--color-primary); }
 .event-detail + .event-detail { padding-top: 16px; }
-.event-detail h2 { margin: 0; font-size: 30px; line-height: 36px; font-weight: 400; letter-spacing: -1px; }
-.event-detail__meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; font-size: 18px; line-height: 24px; }
-.event-detail__meta span::first-letter { text-transform: uppercase; }
-.event-detail__poster { display: block; width: 100%; height: auto; aspect-ratio: 342 / 470; object-fit: cover; border-radius: 8px; }
+.event-detail h2 { grid-area: date; margin: 0; font-size: 30px; line-height: 36px; font-weight: 400; letter-spacing: -1px; }
+.event-detail__time { grid-area: time; text-align: right; }
+.event-detail__weekday { grid-area: day; }
+.event-detail__time, .event-detail__weekday { margin-bottom: 16px; font-size: 18px; line-height: 24px; }
+.event-detail__weekday > span { display: block; }
+.event-detail__weekday > span::first-letter { text-transform: uppercase; }
+.event-detail__bars { display: none; }
+.event-detail__poster { grid-area: poster; display: block; width: 100%; height: auto; aspect-ratio: 342 / 470; object-fit: cover; border-radius: 8px; }
 .event-detail:last-child { padding-bottom: 16px; }
 .events-page .contacts-section { margin-top: 120px; }
 @media (min-width: 48rem) {
-  .events-page .screen-header { margin-top: 24px; }
-  .events-page .screen-header h1 { font-size: 40px; line-height: 48px; }
-  .events-list { max-width: 520px; margin-inline: auto; padding-top: 32px; }
-  .event-detail h2 { font-size: 36px; line-height: 44px; }
+  .events-page .screen-header { display: block; margin: 64px 0; }
+  .events-page .screen-back { display: none; }
+  .events-page .screen-header h1 { text-align: left; font-size: 64px; line-height: 72px; text-transform: uppercase; }
+  .events-list { padding-top: 0; }
+  .event-detail { grid-template-columns: minmax(0, 272px) minmax(0, 1fr); grid-template-rows: auto auto 1fr; grid-template-areas: "poster date" "poster time" "poster day"; column-gap: 12px; padding-bottom: 40px; }
+  .event-detail + .event-detail { padding-top: 40px; }
+  .event-detail h2 { font-size: 48px; line-height: 56px; letter-spacing: -1px; text-align: right; }
+  .event-detail__time { text-align: right; font-size: 32px; line-height: 32px; margin: 0; }
+  .event-detail__weekday { align-self: end; justify-self: end; margin: 0; font-size: 32px; line-height: 40px; text-align: right; }
+  .event-detail__bars { display: flex; justify-content: flex-end; gap: 12px; margin-bottom: 40px; }
+  .event-detail__bars span { display: block; width: 12px; height: 64px; border-radius: 6px; background: currentColor; opacity: .1; }
+  .event-detail__bars span.is-active { opacity: 1; }
+  .event-detail__poster { aspect-ratio: 272 / 375; }
+  .event-detail:last-child { padding-bottom: 40px; }
 }

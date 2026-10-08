@@ -3,7 +3,8 @@ import { events } from '../data/events';
 import { Contacts } from '../components/Contacts';
 import{useEffect,useState}from'react';
 import{BookingModal,DishCard,EventCard,GalleryGrid,SectionHeader}from'../components';
-import type{Dish,GalleryItem}from'../types/content';
+import type{Dish}from'../types/content';
+import { gallery } from '../data/gallery';
 import menu01 from'../assets/menu/menu-01.jpg';
 import menu02 from'../assets/menu/menu-02.jpg';
 import menu03 from'../assets/menu/menu-03.jpg';
@@ -13,18 +14,12 @@ import menu06 from'../assets/menu/menu-06.jpg';
 import menu07 from'../assets/menu/menu-07.jpg';
 import menu08 from'../assets/menu/menu-08.jpg';
 import menu09 from'../assets/menu/menu-09.jpg';
-import gallery01 from'../assets/gallery/gallery-01.jpg';
-import gallery02 from'../assets/gallery/gallery-02.jpg';
-import gallery03 from'../assets/gallery/gallery-03.jpg';
-import gallery04 from'../assets/gallery/gallery-04.jpg';
-import gallery05 from'../assets/gallery/gallery-05.jpg';
-import gallery06 from'../assets/gallery/gallery-06.jpg';
 import facade from'../assets/brand/facade.svg';
 import emblem from'../assets/brand/emblem.svg';
 import heroHeading from'../assets/brand/hero-heading.svg';
-const dishes:Dish[]=[{id:'1',name:'Пряные маринованные овощи',description:'350 мл',price:'750',image:menu01},{id:'2',name:'Картофель фри',description:'150 мл',price:'750',image:menu09},{id:'3',name:'Кукурузные ребра',price:'940 ₽',image:menu03},{id:'4',name:'Жареный баклажан Katsu Parmigiana',price:'490 ₽',image:menu04},{id:'5',name:'Амаретти сауэр',price:'720 ₽',image:menu05},{id:'6',name:'Тар-тар из говядины с мисо-горчицей',price:'580 ₽',image:menu06},{id:'7',name:'Лост черри',price:'450 ₽',image:menu07},{id:'8',name:'Капри дайкири',price:'650 ₽',image:menu08},{id:'9',name:'Оливки фри',price:'790 ₽',image:menu02}];
+const dishes:Dish[]=[{id:'1',name:'Пряные маринованные овощи',description:'350 г',price:'750',image:menu01},{id:'2',name:'Картофель фри',description:'150 г',price:'750',image:menu09},{id:'3',name:'Кукурузные ребра',description:'150 г',price:'940',image:menu03},{id:'4',name:'Жареный баклажан Katsu Parmigiana',description:'350 г',price:'490',image:menu04},{id:'5',name:'Амаретти сауэр',description:'350 мл',price:'720',image:menu05},{id:'6',name:'Тар-тар из говядины с мисо-горчицей',description:'350 г',price:'580',image:menu06},{id:'7',name:'Лост черри',description:'350 мл',price:'450',image:menu07},{id:'8',name:'Капри дайкири',description:'150 мл',price:'650',image:menu08},{id:'9',name:'Оливки фри',description:'350 г',price:'790',image:menu02}];
 
-const gallery:GalleryItem[]=[{id:'1',src:gallery04,alt:'Фасад Мануфактуры'},{id:'2',src:gallery05,alt:'Винная коллекция Мануфактуры'},{id:'3',src:gallery03,alt:'Бар Мануфактуры'},{id:'4',src:gallery01,alt:'Детали интерьера Мануфактуры'},{id:'5',src:gallery02,alt:'Атмосфера Мануфактуры'},{id:'6',src:gallery06,alt:'Зал Мануфактуры'}];
+
 
 export function HomePage(){const hydrated=useHydrated();const[isBookingOpen,setBookingOpen]=useState(()=>typeof window!=='undefined'&&window.location.hash==='#booking');
 useEffect(()=>{const openBooking=()=>{if(window.location.hash==='#booking')setBookingOpen(true)};window.addEventListener('hashchange',openBooking);return()=>window.removeEventListener('hashchange',openBooking)},[]);

@@ -5,6 +5,8 @@ import {
 } from '../integrations/remarked';
 import type { BookingReceipt, BookingRequest, BookingSession, BookingSlot } from '../integrations/remarked';
 import '../styles/booking.css';
+import { PhoneInput } from './PhoneInput';
+import { LargePartyNotice } from './LargePartyNotice';
 
 const dateLabel = (date: string, options: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat('ru', { ...options, timeZone: 'UTC' }).format(new Date(`${date}T12:00:00Z`)).replace('.', '');
 const fallback = 'Не удалось связаться с сервисом бронирования. Попробуйте ещё раз или позвоните нам.';
@@ -54,7 +56,17 @@ export function BookingForm({ onBack }: { onBack?: () => void }) {
   useEffect(() => { if (notice || receipt) noticeRef.current?.focus(); }, [notice, receipt]);
 
   const slots = !loadError && availability?.date === date && availability.guests === guests ? availability.slots : [];
-  const selected = slots.find(slot => slot.id === time);
+  const nextDate = new Date(`${date}T12:00:00Z`);
+  nextDate.setUTCDate(nextDate.getUTCDate() + 1);
+  const timeOptions = Array.from({ length: 29 }, (_, index) => {
+    const minutes = 17 * 60 + index * 15;
+    const value = `${String(Math.floor(minutes / 60) % 24).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
+    const slotDate = minutes === 24 * 60 ? nextDate.toISOString().slice(0, 10) : date;
+    const slotId = `${slotDate} ${value}:00`;
+    return { id: slotId, time: value, nextDay: slotDate !== date, available: slots.some(slot => slot.id === slotId) };
+  });
+  const hasAvailableTime = timeOptions.some(option => option.available);
+  const selected = timeOptions.some(option => option.id === time && option.available) ? slots.find(slot => slot.id === time) : undefined;
   const locked = sending || attempt !== null;
   const guestOptions = session ? Array.from({ length: session.maxGuests - session.minGuests + 1 }, (_, i) => i + session.minGuests) : [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -124,9 +136,7 @@ export function BookingForm({ onBack }: { onBack?: () => void }) {
           <label className="booking-field">
             <span className="sr-only">Номер телефона</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m6 3 4 5-3 3c2 3 3 4 6 6l3-3 5 4c-1 3-2 4-5 3C8 18 3 13 2 7c0-2 1-4 4-4Z" /></svg>
-            <input name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="+7 (---) --- -- --" required maxLength={24} disabled={locked} onInput={event => event.currentTarget.setCustomValidity('')} onBlur={event => {
-              event.currentTarget.setCustomValidity(normalizePhone(event.currentTarget.value) ? '' : 'Введите корректный номер телефона.');
-            }} />
+            <PhoneInput disabled={locked} />
           </label>
         </div>
         <div className="booking-honeypot" aria-hidden="true"><label>Ваш сайт<input name="website" autoComplete="off" tabIndex={-1} /></label></div>
@@ -139,13 +149,14 @@ export function BookingForm({ onBack }: { onBack?: () => void }) {
             </label>)}
           </div>
         </fieldset>
-        <fieldset className="booking-choice" disabled={locked || !session}>
+        <fieldset className="booking-choice" disabled={locked}>
           <legend>Количество персон</legend>
           <div className="booking-options booking-options--guests">
             {guestOptions.map(value => <label className="booking-option booking-option--guest" key={value}>
-              <input type="radio" name="guests" value={value} checked={guests === value} onChange={() => changeSelection(date, value)} />
+              <input type="radio" name="guests" disabled={!session} value={value} checked={guests === value} onChange={() => changeSelection(date, value)} />
               <span>{value}</span>
             </label>)}
+            <LargePartyNotice id={`${id}-large-party`} />
           </div>
         </fieldset>
         <fieldset className="booking-choice" aria-describedby={`${id}-reservation-terms`} disabled={locked || loading}>
@@ -153,12 +164,12 @@ export function BookingForm({ onBack }: { onBack?: () => void }) {
           <p className="booking-reservation-note" id={`${id}-reservation-terms`}>Стол будет зарезервирован для Вас на 3 часа. Мы сохраняем бронь в течение 20 минут после указанного времени. Если Вы задерживаетесь, пожалуйста, предупредите нас заранее.</p>
           <p className="booking-timezone">Время местное, Барнаул.</p>
           <div className="booking-availability" role="status" aria-live="polite">
-            {loading ? <p>Проверяем свободное время…</p> : loadError ? <p>{loadError}</p> : slots.length === 0 ? <p>На эту дату нет свободного времени для {guests} гостей. Выберите другую дату или количество персон.</p> : null}
+            {loading ? <p>Проверяем свободное время…</p> : loadError ? <p>{loadError}</p> : !hasAvailableTime ? <p>На эту дату нет свободного времени для {guests} гостей. Выберите другую дату или количество персон.</p> : null}
           </div>
           <div className="booking-options">
-            {!loading && slots.map(slot => <label className="booking-option booking-option--time" key={slot.id}>
-              <input type="radio" name="time" value={slot.id} checked={time === slot.id} onChange={() => { setTime(slot.id); setNotice(''); }} required />
-              <span>{slot.time}{slot.date !== date && <small>+1 день</small>}</span>
+            {timeOptions.map(option => <label className="booking-option booking-option--time" key={option.id}>
+              <input type="radio" name="time" value={option.id} checked={time === option.id} disabled={!option.available} onChange={() => { setTime(option.id); setNotice(''); }} required />
+              <span>{option.time}{option.nextDay && <small>+1 день</small>}</span>
             </label>)}
           </div>
         </fieldset>

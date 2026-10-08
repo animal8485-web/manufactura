@@ -4,7 +4,7 @@ import { BookingPage } from './pages/BookingPage';
 
 function App({ path }: { path: string }) {
   const isBooking = path === '/booking';
-  const isInterior = ['/menu', '/events'].includes(path);
+  const isInterior = ['/menu', '/events', '/gallery'].includes(path);
   const page = path === '/menu' ? <MenuPage /> : path === '/events' ? <EventsPage /> : path === '/gallery' ? <GalleryPage /> : isBooking ? <BookingPage /> : path === '/' ? <HomePage /> : <section className="home-section"><h1>Страница не найдена</h1><p><a href="/">Вернуться на главную</a></p></section>;
   return <div className={`app-shell${isInterior ? ' app-shell--interior' : ''}${isBooking ? ' app-shell--booking' : ''}`}>
     {!isBooking && <Header path={path} />}
