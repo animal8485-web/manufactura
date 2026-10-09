@@ -9,6 +9,8 @@ const escapeHtml = (text) => text.replace(/[&<>"']/g, (character) => ({ '&': '&a
 
 for (const page of pages) {
   const url = `${site.origin}${page.path === '/404' ? '/' : page.path}`;
+  const socialTitle = page.socialTitle ?? page.title;
+  const socialDescription = page.socialDescription ?? page.description;
   const head = `
     <meta name="description" content="${escapeHtml(page.description)}" />
     <meta name="robots" content="${page.index ? 'index, follow' : 'noindex, follow'}" />
@@ -16,8 +18,8 @@ for (const page of pages) {
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content="${site.name}" />
-    <meta property="og:title" content="${escapeHtml(page.title)}" />
-    <meta property="og:description" content="${escapeHtml(page.description)}" />
+    <meta property="og:title" content="${escapeHtml(socialTitle)}" />
+    <meta property="og:description" content="${escapeHtml(socialDescription)}" />
     <meta property="og:url" content="${url}" />
     <meta property="og:image" content="${site.origin}${site.image}" />
     <meta property="og:image:type" content="image/png" />
@@ -25,8 +27,8 @@ for (const page of pages) {
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Мануфактура — бар и кухня, Барнаул, Льва Толстого, 36" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${escapeHtml(page.title)}" />
-    <meta name="twitter:description" content="${escapeHtml(page.description)}" />
+    <meta name="twitter:title" content="${escapeHtml(socialTitle)}" />
+    <meta name="twitter:description" content="${escapeHtml(socialDescription)}" />
     <meta name="twitter:image" content="${site.origin}${site.image}" />
     <script type="application/ld+json">${schema}</script>`;
   const html = template.replace(/<title>.*?<\/title>/, `<title>${escapeHtml(page.title)}</title>`)
