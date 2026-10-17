@@ -1,0 +1,124 @@
+.legal-documents-trigger {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1px solid rgb(144 46 50 / 20%);
+  color: inherit;
+  background: transparent;
+  text-align: left;
+  text-transform: inherit;
+}
+
+.legal-documents-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  align-items: end;
+  padding-top: 16px;
+  background: rgb(46 15 20 / 45%);
+}
+
+.legal-documents-dialog {
+  width: min(100%, 520px);
+  max-height: calc(100dvh - 16px);
+  margin-inline: auto;
+  overflow-y: auto;
+  padding: 24px 16px calc(24px + env(safe-area-inset-bottom));
+  border-radius: 24px 24px 0 0;
+  color: var(--color-primary);
+  background: var(--color-background);
+}
+
+.legal-documents-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.legal-documents-heading h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.legal-documents-close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: inherit;
+  background: transparent;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.legal-documents-list {
+  display: grid;
+  gap: 8px;
+}
+
+.legal-document-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+  padding: 16px;
+  border: 1px solid currentColor;
+  border-radius: 16px;
+  font-size: 16px;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+
+.loyalty-placeholder {
+  min-height: 50vh;
+  max-width: 620px;
+}
+
+.loyalty-placeholder h1 {
+  margin: 0 0 24px;
+  font-size: clamp(32px, 7vw, 56px);
+  line-height: 1;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.loyalty-placeholder p {
+  max-width: 520px;
+  margin: 0 0 32px;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.loyalty-placeholder__back {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  padding: 12px 20px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 48rem) {
+  .legal-documents-backdrop {
+    place-items: center;
+    padding: 32px;
+  }
+
+  .legal-documents-dialog {
+    border-radius: 24px;
+    padding: 32px;
+  }
+}

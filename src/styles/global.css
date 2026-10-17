@@ -1,4 +1,5 @@
 @import './tokens.css';
+@import './legal.css';
 
 @font-face {
   font-family: 'Roboto Condensed';
@@ -75,10 +76,13 @@ img { display: block; max-width: 100%; }
 .legal-section { margin-top: 48px; font-size: 14px; line-height: 24px; text-transform: uppercase; }
 .legal-section p, .legal-section a { display: block; margin: 0; padding: 12px 0; border-bottom: 1px solid rgb(144 46 50 / 20%); }
 .legal-section p:last-child { border: 0; }
-.site-footer { padding-block: 56px 64px; color: #000; }
-.footer-credit { display: flex; align-items: center; justify-content: space-between; padding: 0 10px 16px 0; border-bottom: 1px solid currentColor; }
+.site-footer { padding: 56px 0 16px; color: #000; }
+.footer-credit { display: flex; align-items: center; justify-content: space-between; padding-right: 10px; }
+.footer-credit--designer { padding-bottom: 16px; border-bottom: 1px solid currentColor; }
 .footer-signature { width: 148px; height: 24px; }
-.footer-caption { display: flex; justify-content: space-between; gap: 16px; padding-top: 12px; font-size: 12px; line-height: 16px; text-transform: uppercase; }
+.footer-caption { display: flex; justify-content: space-between; gap: 8px; padding-block: 12px; border-bottom: 1px solid currentColor; font-size: clamp(10px, 3.2vw, 12px); line-height: 16px; text-transform: uppercase; white-space: nowrap; }
+.footer-credit--developer { min-height: 77px; padding-block: 5px; }
+.footer-developer-mark { width: 52px; height: 67px; object-fit: contain; }
 .modal-backdrop { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 16px; background: rgb(46 15 20 / 45%); }
 .modal { position: relative; width: min(100%, 32rem); padding: 32px; border-radius: 24px; background: var(--color-surface); }
 .modal__close { position: absolute; top: 12px; right: 12px; border: 0; background: transparent; font-size: 32px; color: inherit; }

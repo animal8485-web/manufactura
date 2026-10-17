@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { LegalDocumentsModal } from './LegalDocumentsModal';
+
 const contacts = [
   { label: '+7 (996) 501-87-57', href: 'tel:+79965018757' },
   { label: 'TELEGRAM', href: 'https://t.me/manufactura_bar' },
@@ -7,6 +10,8 @@ const contacts = [
 ];
 
 export function Contacts({ className = '' }: { className?: string }) {
+  const [documentsOpen, setDocumentsOpen] = useState(false);
+
   return (
     <section className={`contacts-section ${className}`} aria-label="Контакты">
       <div className="contact-list">
@@ -25,9 +30,10 @@ export function Contacts({ className = '' }: { className?: string }) {
       <div className="legal-section">
         <p>ООО «Вкусные Делишки»</p>
         <p>ИНН 2225239190</p>
-        <a href="#privacy">Политика обработки персональных данных</a>
+        <button className="legal-documents-trigger" type="button" onClick={() => setDocumentsOpen(true)}>Политика обработки персональных данных</button>
         <p>2026, Все права защищены</p>
       </div>
+      <LegalDocumentsModal isOpen={documentsOpen} onClose={() => setDocumentsOpen(false)} />
     </section>
   );
 }
