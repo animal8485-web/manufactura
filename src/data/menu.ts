@@ -1,4 +1,7 @@
 import type { Dish } from '../types/content';
+import cocktailPhoto05 from '../assets/menu/dishes/cocktail-05.webp';
+import cocktailPhoto07 from '../assets/menu/dishes/cocktail-07.webp';
+import cocktailPhoto08 from '../assets/menu/dishes/cocktail-08.webp';
 import photo0 from '../assets/menu/dishes/marinated-vegetables.webp';
 import photo1 from '../assets/menu/dishes/fries.webp';
 import photo2 from '../assets/menu/dishes/corn.webp';
@@ -917,6 +920,15 @@ export const menuGroups: MenuGroup[] = [
   }
 ];
 
-export const featuredDishes = menuGroups[0].sections[0].dishes
-  .filter((dish) => dish.image)
-  .slice(0, 9);
+// Cocktail photos are from the existing site; individual names and prices are unconfirmed.
+const cocktailShowcase: Dish[] = [cocktailPhoto05, cocktailPhoto07, cocktailPhoto08].map((image, index) => ({
+  id: `cocktail-showcase-${index + 1}`,
+  name: 'Коктейли',
+  description: 'Барная карта',
+  image,
+}));
+
+export const featuredDishes = [
+  ...menuGroups.flatMap((group) => group.sections.flatMap((section) => section.dishes)).filter((dish) => dish.image),
+  ...cocktailShowcase,
+];
