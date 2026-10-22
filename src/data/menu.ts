@@ -24,6 +24,14 @@ import photo17 from '../assets/menu/dishes/cheese-ramen.webp';
 import photo18 from '../assets/menu/dishes/pork-schnitzel.webp';
 import photo19 from '../assets/menu/dishes/chicken-thigh.webp';
 import photo20 from '../assets/menu/dishes/shrimp-zucchini.webp';
+import photo21 from '../assets/menu/dishes/eggplant-pasta.webp';
+import photo22 from '../assets/menu/dishes/shrimp-pasta.webp';
+import photo23 from '../assets/menu/dishes/roastbeef-pasta.webp';
+import photo24 from '../assets/menu/dishes/tomato-pizza.webp';
+import photo25 from '../assets/menu/dishes/roastbeef-pizza.webp';
+import photo26 from '../assets/menu/dishes/coppa-pizza.webp';
+import photo27 from '../assets/menu/dishes/yuzu-tiramisu.webp';
+import photo28 from '../assets/menu/dishes/matcha-cheesecake.webp';
 
 export interface MenuSection { id: string; title: string; dishes: Dish[] }
 export interface MenuGroup { id: string; title: string; sections: MenuSection[] }
@@ -243,21 +251,24 @@ export const menuGroups: MenuGroup[] = [
             "name": "Паста с баклажаном и сырным кремом",
             "ingredients": "томатный соус, баклажан, сырный крем, лук, базилик",
             "portion": "320 г",
-            "price": "500"
+            "price": "500",
+            "image": photo21
           },
           {
             "id": "shrimp-pasta",
             "name": "Паста с креветкой и креветочным маслом",
             "ingredients": "креветка, томатно-сливочный соус, даси, чили, бонито",
             "portion": "330 г",
-            "price": "700"
+            "price": "700",
+            "image": photo22
           },
           {
             "id": "roastbeef-pasta",
             "name": "Паста cacio e pepe с ростбифом",
             "ingredients": "сыр, перец, лимонный соус, ростбиф",
             "portion": "320 г",
-            "price": "750"
+            "price": "750",
+            "image": photo23
           }
         ]
       },
@@ -270,21 +281,24 @@ export const menuGroups: MenuGroup[] = [
             "name": "Римская пицца с томатами",
             "ingredients": "моцарелла, томаты, базилик",
             "portion": "350 г",
-            "price": "600"
+            "price": "600",
+            "image": photo24
           },
           {
             "id": "roastbeef-pizza",
             "name": "Римская пицца с ростбифом",
             "ingredients": "моцарелла, перец, ростбиф, дорблю",
             "portion": "355 г",
-            "price": "800"
+            "price": "800",
+            "image": photo25
           },
           {
             "id": "coppa-pizza",
             "name": "Римская пицца с коппой",
             "ingredients": "моцарелла, томаты, коппа, мизуна, базилик",
             "portion": "360 г",
-            "price": "800"
+            "price": "800",
+            "image": photo26
           }
         ]
       },
@@ -297,14 +311,16 @@ export const menuGroups: MenuGroup[] = [
             "name": "Юдзу-лимонный тирамису",
             "ingredients": "сливочный десерт, юдзу-лимонный гель, лимонная пудра",
             "portion": "134 г",
-            "price": "450"
+            "price": "450",
+            "image": photo27
           },
           {
             "id": "matcha-cheesecake",
             "name": "Баскский чизкейк с матча",
             "ingredients": "чизкейк, матча, малиновый соус, малина",
             "portion": "140 г",
-            "price": "500"
+            "price": "500",
+            "image": photo28
           }
         ]
       }
