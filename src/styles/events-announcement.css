@@ -1,0 +1,7 @@
+.events-announcement { padding: 28px 24px; border: 1px solid var(--color-primary); border-radius: 24px; background: var(--color-primary); color: var(--color-on-primary); }
+.events-announcement__title { max-width: 28ch; margin: 0 0 12px; font-family: 'TT Interphases Pro Condensed', var(--font-brand); font-size: 28px; line-height: 32px; font-weight: 600; text-transform: uppercase; text-wrap: balance; }
+.events-announcement__copy { margin: 0; font-size: 18px; line-height: 26px; }
+@media (min-width: 48rem) {
+  .events-announcement { padding: 40px; }
+  .events-announcement__title { font-size: 36px; line-height: 42px; }
+}

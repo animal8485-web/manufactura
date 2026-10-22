@@ -2,6 +2,8 @@ export interface Dish {
   id: string;
   name: string;
   description?: string;
+  ingredients?: string;
+  portion?: string;
   price?: string;
   image?: string;
 }
