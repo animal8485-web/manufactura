@@ -55,6 +55,7 @@ img { display: block; max-width: 100%; }
 .hero-cta:hover { background: #fff; }
 .horizontal-scroll, .gallery-grid { display: flex; gap: 8px; overflow-x: auto; margin-right: -16px; padding-right: 16px; scrollbar-width: none; scroll-snap-type: x proximity; }
 .horizontal-scroll::-webkit-scrollbar, .gallery-grid::-webkit-scrollbar { display: none; }
+.photo-rail { scroll-snap-type: none; }
 .card { flex: 0 0 167px; min-width: 0; scroll-snap-align: start; }
 .card__body { padding-top: 8px; }
 .card h3, .card p { font-size: 14px; line-height: 18px; font-weight: 400; margin: 0; }
