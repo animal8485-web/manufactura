@@ -316,7 +316,7 @@ export const menuGroups: MenuGroup[] = [
           },
           {
             "id": "matcha-cheesecake",
-            "name": "Баскский чизкейк с матча",
+            "name": "Баскский чизкейк с матчей",
             "ingredients": "чизкейк, матча, малиновый соус, малина",
             "portion": "140 г",
             "price": "500",
@@ -936,10 +936,14 @@ export const menuGroups: MenuGroup[] = [
   }
 ];
 
-// Cocktail photos are from the existing site; individual names and prices are unconfirmed.
-const cocktailShowcase: Dish[] = [cocktailPhoto05, cocktailPhoto07, cocktailPhoto08].map((image, index) => ({
+// Photo/name assignments restored from the confirmed menu in commit daf54b9.
+const cocktailShowcase: Dish[] = [
+  { image: cocktailPhoto05, name: 'Амаретти сауэр' },
+  { image: cocktailPhoto07, name: 'Лост черри' },
+  { image: cocktailPhoto08, name: 'Капри дайкири' },
+].map(({ image, name }, index) => ({
   id: `cocktail-showcase-${index + 1}`,
-  name: 'Коктейли',
+  name,
   description: 'Барная карта',
   image,
 }));
