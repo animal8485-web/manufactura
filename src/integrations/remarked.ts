@@ -3,6 +3,7 @@ export const REMARKED_POINT = 599599;
 export const BOOKING_MINUTES = 180;
 export const SLOT_MINUTES = 15;
 export const VENUE_TIME_ZONE = 'Asia/Barnaul';
+const BOOKING_OPEN_THROUGH = '2026-11-30';
 
 export type BookingSession = { token: string; minGuests: number; maxGuests: number };
 export type BookingSlot = { id: string; date: string; time: string; duration: number };
@@ -63,9 +64,10 @@ export function venueDateTime(now = new Date()) {
 export function bookingDates(now = new Date()): string[] {
   const today = venueDateTime(now).slice(0, 10);
   const date = new Date(`${today}T12:00:00Z`);
-  const month = date.getUTCMonth();
+  const monthEnd = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0, 12)).toISOString().slice(0, 10);
+  const lastDate = monthEnd > BOOKING_OPEN_THROUGH ? monthEnd : BOOKING_OPEN_THROUGH;
   const dates: string[] = [];
-  while (date.getUTCMonth() === month) {
+  while (date.toISOString().slice(0, 10) <= lastDate) {
     dates.push(date.toISOString().slice(0, 10));
     date.setUTCDate(date.getUTCDate() + 1);
   }

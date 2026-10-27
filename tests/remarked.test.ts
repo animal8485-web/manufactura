@@ -6,10 +6,18 @@ const originalStorage = Object.getOwnPropertyDescriptor(globalThis, 'sessionStor
 afterEach(() => { globalThis.fetch = originalFetch; if (originalStorage) Object.defineProperty(globalThis, 'sessionStorage', originalStorage); else Reflect.deleteProperty(globalThis, 'sessionStorage'); });
 const session = { token: 'test-token', minGuests: 1, maxGuests: 8 };
 const booking = { name: 'Тест', phone: '89991234567', date: '2026-10-08', time: '17:15', guests: 4, requestId: 'b90e969d-7593-44e0-92fb-c98d6b9b9909' };
-test('venue dates are independent of browser timezone and include the month end', () => {
+test('venue dates are independent of browser timezone and booking includes all November', () => {
   assert.equal(venueDateTime(new Date('2026-10-07T18:00:00Z')), '2026-10-08 01:00:00');
   const dates = bookingDates(new Date('2026-10-07T18:00:00Z'));
-  assert.equal(dates[0], '2026-10-08'); assert.equal(dates.at(-1), '2026-10-31');
+  assert.equal(dates[0], '2026-10-08'); assert.equal(dates.at(-1), '2026-11-30');
+  assert.ok(dates.includes('2026-11-01')); assert.ok(dates.includes('2026-11-30'));
+  assert.ok(!dates.includes('2026-12-01'));
+  assert.equal(dates.length, 54);
+});
+test('booking extension preserves venue-local month boundaries and later months', () => {
+  assert.deepEqual(bookingDates(new Date('2026-11-30T16:59:00Z')), ['2026-11-30']);
+  const december = bookingDates(new Date('2026-11-30T17:00:00Z'));
+  assert.equal(december[0], '2026-12-01'); assert.equal(december.at(-1), '2026-12-31');
 });
 test('normalizes Russian phones and rejects short numbers', () => {
   assert.equal(normalizePhone('8 (999) 123-45-67'), '+79991234567');
