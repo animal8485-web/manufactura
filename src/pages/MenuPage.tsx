@@ -172,7 +172,7 @@ export function MenuPage() {
                         {dish.ingredients && <p>{dish.ingredients}</p>}
                       </div>
                       {dish.portion && <span className="menu-item__portion">{dish.portion}</span>}
-                      <span className="menu-item__price" aria-label={`${dish.price} рублей`}>{dish.price}</span>
+                      {dish.price && <span className="menu-item__price" aria-label={`${dish.price} рублей`}>{dish.price}</span>}
                     </li>
                   ))}
                 </ul>
