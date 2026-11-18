@@ -133,7 +133,7 @@ export const menuGroups: MenuGroup[] = [
             "name": "Ростбиф",
             "ingredients": "ростбиф, бонито-тоннато, каперсы, лимон",
             "portion": "150 г",
-            "price": "720",
+            "price": "750",
             "image": photo8
           },
           {
@@ -149,7 +149,7 @@ export const menuGroups: MenuGroup[] = [
             "name": "Тартар из говядины с мисо-горчицей",
             "ingredients": "говядина, огурцы, каперсы, мисо-горчица",
             "portion": "155 г",
-            "price": "720",
+            "price": "750",
             "image": photo10
           },
           {
@@ -203,7 +203,7 @@ export const menuGroups: MenuGroup[] = [
             "name": "Салат с ростбифом",
             "ingredients": "ростбиф, томаты, листья, оливки, лимонный соус",
             "portion": "220 г",
-            "price": "650",
+            "price": "700",
             "image": photo13
           },
           {
@@ -211,7 +211,7 @@ export const menuGroups: MenuGroup[] = [
             "name": "Салат с тёплой креветкой",
             "ingredients": "креветка, листья, огурцы, томаты, вафу-майо",
             "portion": "220 г",
-            "price": "690",
+            "price": "700",
             "image": photo14
           },
           {
@@ -241,7 +241,7 @@ export const menuGroups: MenuGroup[] = [
             "name": "Рамен со свининой тя-шу",
             "ingredients": "куриный бульон, лапша, свинина, яйцо, нори, шою-тара, чили",
             "portion": "600 г",
-            "price": "600",
+            "price": "650",
             "image": photo16
           },
           {
@@ -249,7 +249,7 @@ export const menuGroups: MenuGroup[] = [
             "name": "Сырный рамен с креветкой",
             "ingredients": "куриный бульон, сыр, креветка, яйцо, нори, лук",
             "portion": "600 г",
-            "price": "800",
+            "price": "850",
             "image": photo17
           }
         ]
