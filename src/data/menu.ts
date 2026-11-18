@@ -303,7 +303,7 @@ export const menuGroups: MenuGroup[] = [
             "name": "Стейк мясника",
             "ingredients": "стейк мясника, маринованные овощи, мясной жюс",
             "image": butcherSteakPhoto,
-            "portion": "за 100 г",
+            "portion": "100 г",
             "price": "800"
           }
         ]
