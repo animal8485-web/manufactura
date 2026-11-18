@@ -47,7 +47,7 @@ export interface MenuGroup { id: string; title: string; sections: MenuSection[] 
 
 // Transcribed from 10 supplied mini-app screenshots. Prices are in RUB.
 // Tinctures use the regular 250 ₽ price; the screenshot's Wednesday promotion is unconfirmed.
-// Nine kitchen additions from 17 Nov 2026 have no prices/portions yet, as requested.
+// Nine kitchen additions checked against supplied menu photos on 18 Nov 2026.
 export const menuGroups: MenuGroup[] = [
   {
     "id": "kitchen",
@@ -156,19 +156,25 @@ export const menuGroups: MenuGroup[] = [
             "id": "crispy-chicken",
             "name": "Хрустящий цыплёнок",
             "ingredients": "цыплёнок, чёрный чеснок, медовый огурец",
-            "image": crispyChickenPhoto
+            "image": crispyChickenPhoto,
+            "portion": "190 г",
+            "price": "400"
           },
           {
             "id": "shrimp-popcorn",
             "name": "Креветочный попкорн",
             "ingredients": "креветка, манго-чили, фурикакэ",
-            "image": shrimpPopcornPhoto
+            "image": shrimpPopcornPhoto,
+            "portion": "130 г",
+            "price": "700"
           },
           {
             "id": "trout-miso",
             "name": "Форель с мисо-кремом",
             "ingredients": "форель слабой соли, мисо-крем, понзу, креветочное масло",
-            "image": troutMisoPhoto
+            "image": troutMisoPhoto,
+            "portion": "175 г",
+            "price": "650"
           }
         ]
       },
@@ -212,7 +218,9 @@ export const menuGroups: MenuGroup[] = [
             "id": "trout-salad",
             "name": "Салат с форелью",
             "ingredients": "форель, брокколи, эдамаме, понзу, печёный лимон, мисо-крем",
-            "image": troutSaladPhoto
+            "image": troutSaladPhoto,
+            "portion": "290 г",
+            "price": "750"
           }
         ]
       },
@@ -251,6 +259,14 @@ export const menuGroups: MenuGroup[] = [
         "title": "Горячее",
         "dishes": [
           {
+            "id": "ravioli-gyoza",
+            "name": "Равиоли-гёдза",
+            "ingredients": "равиоли-гёдза, сливочно-перечный соус КЧП, грибной майо",
+            "image": ravioliGyozaPhoto,
+            "portion": "255 г",
+            "price": "550"
+          },
+          {
             "id": "pork-schnitzel",
             "name": "Свиной шницель с томат-сливками",
             "ingredients": "свинина, томатно-сливочный соус, эдамаме, томаты",
@@ -278,13 +294,17 @@ export const menuGroups: MenuGroup[] = [
             "id": "sea-bass-rice",
             "name": "Морской окунь с рисом и овощами",
             "ingredients": "окунь, соево-имбирный маринад, рис, мисо-ромеско",
-            "image": seaBassRicePhoto
+            "image": seaBassRicePhoto,
+            "portion": "370 г",
+            "price": "650"
           },
           {
             "id": "butcher-steak",
             "name": "Стейк мясника",
             "ingredients": "стейк мясника, маринованные овощи, мясной жюс",
-            "image": butcherSteakPhoto
+            "image": butcherSteakPhoto,
+            "portion": "за 100 г",
+            "price": "800"
           }
         ]
       },
@@ -319,14 +339,10 @@ export const menuGroups: MenuGroup[] = [
           {
             "id": "beef-cheek-pasta",
             "name": "Паста с говяжьей щекой",
-            "ingredients": "говяжья щека, паста, опаренные черри, пармезан, руккола",
-            "image": beefCheekPastaPhoto
-          },
-          {
-            "id": "ravioli-gyoza",
-            "name": "Равиоли-гедза",
-            "ingredients": "равиоли-гедза, сливочно-соевый соус, КЧП, грибной майо",
-            "image": ravioliGyozaPhoto
+            "ingredients": "говяжья щека, паста, опалённые черри, пармезан, руккола",
+            "image": beefCheekPastaPhoto,
+            "portion": "370 г",
+            "price": "650"
           }
         ]
       },
@@ -360,9 +376,11 @@ export const menuGroups: MenuGroup[] = [
           },
           {
             "id": "shrimp-pizza",
-            "name": "Пицца с креветками",
+            "name": "Римская пицца с креветками",
             "ingredients": "моцарелла, креветки, томат, брокколи, манго-чили",
-            "image": shrimpPizzaPhoto
+            "image": shrimpPizzaPhoto,
+            "portion": "470 г",
+            "price": "850"
           }
         ]
       },
