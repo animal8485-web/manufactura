@@ -353,16 +353,16 @@ export const menuGroups: MenuGroup[] = [
           },
           {
             "id": "cocktails-signature-3",
-            "name": "Окинавский гимлет",
-            "ingredients": "джин · ананас · лайм",
-            "portion": "150 мл",
+            "name": "Панда Мандарин",
+            "ingredients": "джин · пандан · содовая",
+            "portion": "350 мл",
             "price": "600"
           },
           {
             "id": "cocktails-signature-4",
-            "name": "Милано клаб",
-            "ingredients": "джин · вермут · фернет · малина",
-            "portion": "180 мл",
+            "name": "Нетто-Торино",
+            "ingredients": "водка · ваниль · кассис · вермут",
+            "portion": "350 мл",
             "price": "600"
           },
           {
@@ -388,9 +388,8 @@ export const menuGroups: MenuGroup[] = [
           },
           {
             "id": "cocktails-signature-8",
-            "name": "Умами президенте",
-            "ingredients": "ром · абрикос · ройбуш · вермут",
-            "portion": "150 мл",
+            "name": "Оцекары",
+            "ingredients": "ром · бергамот · ромашка",
             "price": "600"
           },
           {
@@ -404,6 +403,13 @@ export const menuGroups: MenuGroup[] = [
             "id": "cocktails-signature-10",
             "name": "Ширин хайбол",
             "ingredients": "джин · эвкалипт · алоэ",
+            "portion": "380 мл",
+            "price": "600"
+          },
+          {
+            "id": "cocktails-signature-11",
+            "name": "Японский грог",
+            "ingredients": "ром · груша · миндаль · лайм · печенье",
             "portion": "380 мл",
             "price": "600"
           }
@@ -640,11 +646,6 @@ export const menuGroups: MenuGroup[] = [
         "title": "Виски",
         "dishes": [
           {
-            "id": "bar-whisky-1",
-            "name": "Auchentoshan Classic",
-            "price": "550"
-          },
-          {
             "id": "bar-whisky-2",
             "name": "Mossburn Blended Malt",
             "price": "700"
@@ -660,23 +661,8 @@ export const menuGroups: MenuGroup[] = [
             "price": "1000"
           },
           {
-            "id": "bar-whisky-5",
-            "name": "Matsui The San-In",
-            "price": "1000"
-          },
-          {
-            "id": "bar-whisky-6",
-            "name": "Arlett",
-            "price": "1000"
-          },
-          {
             "id": "bar-whisky-7",
             "name": "Talisker 10 Y.O.",
-            "price": "1100"
-          },
-          {
-            "id": "bar-whisky-8",
-            "name": "Hériose",
             "price": "1100"
           },
           {
@@ -706,24 +692,9 @@ export const menuGroups: MenuGroup[] = [
             "price": "700"
           },
           {
-            "id": "bar-gin-3",
-            "name": "Malfy Originale / Rosa",
-            "price": "750"
-          },
-          {
             "id": "bar-gin-4",
             "name": "Roku Japanese Craft",
             "price": "800"
-          },
-          {
-            "id": "bar-gin-5",
-            "name": "Mare Capri",
-            "price": "1000"
-          },
-          {
-            "id": "bar-gin-6",
-            "name": "Nordés Atlantic",
-            "price": "1000"
           }
         ]
       },
@@ -909,8 +880,8 @@ export const menuGroups: MenuGroup[] = [
           },
           {
             "id": "bar-beer-4",
-            "name": "Bakalar б/а (0,33)",
-            "price": "400"
+            "name": "Крушовице б/а",
+            "price": "270"
           }
         ]
       },
@@ -925,7 +896,7 @@ export const menuGroups: MenuGroup[] = [
           },
           {
             "id": "bar-soft-drinks-2",
-            "name": "Вода Dausuz газ/без 0,2",
+            "name": "Вода Шамбала газ/без 0,2",
             "price": "300"
           },
           {
