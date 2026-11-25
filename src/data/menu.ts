@@ -90,13 +90,6 @@ export const menuGroups: MenuGroup[] = [
             "image": photo7
           },
           {
-            "id": "romano-taco",
-            "name": "Романо-тако с crispy креветкой",
-            "ingredients": "романо, креветка, вафу-бонито",
-            "portion": "210 г",
-            "price": "700"
-          },
-          {
             "id": "roastbeef",
             "name": "Ростбиф",
             "ingredients": "ростбиф, бонито-тоннато, каперсы, лимон",
