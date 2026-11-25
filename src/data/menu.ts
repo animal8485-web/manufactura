@@ -11,12 +11,9 @@ import ravioliGyozaPhoto from '../assets/menu/dishes/ravioli-gyoza.webp';
 import cocktailPhoto05 from '../assets/menu/dishes/cocktail-05.webp';
 import cocktailPhoto07 from '../assets/menu/dishes/cocktail-07.webp';
 import cocktailPhoto08 from '../assets/menu/dishes/cocktail-08.webp';
-import photo0 from '../assets/menu/dishes/marinated-vegetables.webp';
 import photo1 from '../assets/menu/dishes/fries.webp';
-import photo2 from '../assets/menu/dishes/corn.webp';
 import photo3 from '../assets/menu/dishes/olives.webp';
 import photo4 from '../assets/menu/dishes/eggplant.webp';
-import photo5 from '../assets/menu/dishes/zucchini.webp';
 import photo6 from '../assets/menu/dishes/coppa.webp';
 import photo7 from '../assets/menu/dishes/katsu-sando.webp';
 import photo8 from '../assets/menu/dishes/roastbeef.webp';
@@ -24,19 +21,14 @@ import photo9 from '../assets/menu/dishes/shrimp-carpaccio.webp';
 import photo10 from '../assets/menu/dishes/beef-tartare.webp';
 import photo11 from '../assets/menu/dishes/caprese.webp';
 
-import photo12 from '../assets/menu/dishes/green-salad.webp';
 import photo13 from '../assets/menu/dishes/roastbeef-salad.webp';
 import photo14 from '../assets/menu/dishes/warm-shrimp-salad.webp';
-import photo15 from '../assets/menu/dishes/tomato-dashi-soup.webp';
 import photo16 from '../assets/menu/dishes/pork-ramen.webp';
 import photo17 from '../assets/menu/dishes/cheese-ramen.webp';
 import photo18 from '../assets/menu/dishes/pork-schnitzel.webp';
-import photo19 from '../assets/menu/dishes/chicken-thigh.webp';
-import photo20 from '../assets/menu/dishes/shrimp-zucchini.webp';
 import photo21 from '../assets/menu/dishes/eggplant-pasta.webp';
 import photo22 from '../assets/menu/dishes/shrimp-pasta.webp';
 import photo23 from '../assets/menu/dishes/roastbeef-pasta.webp';
-import photo24 from '../assets/menu/dishes/tomato-pizza.webp';
 import photo25 from '../assets/menu/dishes/roastbeef-pizza.webp';
 import photo26 from '../assets/menu/dishes/coppa-pizza.webp';
 import photo27 from '../assets/menu/dishes/yuzu-tiramisu.webp';
@@ -58,28 +50,12 @@ export const menuGroups: MenuGroup[] = [
         "title": "Закуски",
         "dishes": [
           {
-            "id": "marinated-vegetables",
-            "name": "Пряные маринованные овощи",
-            "ingredients": "томаты, огурцы, цукини, перец",
-            "portion": "180 г",
-            "price": "290",
-            "image": photo0
-          },
-          {
             "id": "fries",
             "name": "Картофель фри",
             "ingredients": "картофель, фурикакэ, лимонный майо",
             "portion": "180 г",
             "price": "300",
             "image": photo1
-          },
-          {
-            "id": "corn",
-            "name": "Кукурузные рёбра",
-            "ingredients": "кукуруза, лимонный майо, мисо-горчица, дорблю",
-            "portion": "190 г",
-            "price": "350",
-            "image": photo2
           },
           {
             "id": "olives",
@@ -96,14 +72,6 @@ export const menuGroups: MenuGroup[] = [
             "portion": "210 г",
             "price": "450",
             "image": photo4
-          },
-          {
-            "id": "zucchini",
-            "name": "Цукини фритти",
-            "ingredients": "цукини, лимонный майо, томаты, лук",
-            "portion": "170 г",
-            "price": "450",
-            "image": photo5
           },
           {
             "id": "coppa",
@@ -183,14 +151,6 @@ export const menuGroups: MenuGroup[] = [
         "title": "Салаты",
         "dishes": [
           {
-            "id": "green-salad",
-            "name": "Большой зелёный салат",
-            "ingredients": "романо, айсберг, руккола, огурец, эдамаме, цукини",
-            "portion": "290 г",
-            "price": "480",
-            "image": photo12
-          },
-          {
             "id": "caprese",
             "name": "Капрезе итамеши",
             "ingredients": "томаты, творожный крем, перец, абрикос, базилик",
@@ -229,14 +189,6 @@ export const menuGroups: MenuGroup[] = [
         "title": "Супы",
         "dishes": [
           {
-            "id": "tomato-dashi-soup",
-            "name": "Томатный суп с даси",
-            "ingredients": "томаты, даси, креветочное масло, огурец, базилик, цитрус",
-            "portion": "280 г",
-            "price": "350",
-            "image": photo15
-          },
-          {
             "id": "pork-ramen",
             "name": "Рамен со свининой тя-шу",
             "ingredients": "куриный бульон, лапша, свинина, яйцо, нори, шою-тара, чили",
@@ -273,22 +225,6 @@ export const menuGroups: MenuGroup[] = [
             "portion": "300 г",
             "price": "700",
             "image": photo18
-          },
-          {
-            "id": "chicken-thigh",
-            "name": "Хрустящее куриное бедро",
-            "ingredients": "курица, мисо-глазурь, кукуруза, кунжут, лук, фурикакэ",
-            "portion": "300 г",
-            "price": "800",
-            "image": photo19
-          },
-          {
-            "id": "shrimp-zucchini",
-            "name": "Креветки с цукини",
-            "ingredients": "креветки, цукини, чеснок, лимонно-сливочный соус, перец",
-            "portion": "250 г",
-            "price": "800",
-            "image": photo20
           },
           {
             "id": "sea-bass-rice",
@@ -350,14 +286,6 @@ export const menuGroups: MenuGroup[] = [
         "id": "roman-pizza",
         "title": "Римская пицца",
         "dishes": [
-          {
-            "id": "tomato-pizza",
-            "name": "Римская пицца с томатами",
-            "ingredients": "моцарелла, томаты, базилик",
-            "portion": "350 г",
-            "price": "600",
-            "image": photo24
-          },
           {
             "id": "roastbeef-pizza",
             "name": "Римская пицца с ростбифом",
